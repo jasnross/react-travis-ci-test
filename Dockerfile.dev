@@ -2,5 +2,8 @@ FROM node:alpine
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install
-COPY ./src/ ./public/ ./tsconfig.json ./
+COPY src/ ./src
+COPY public ./public
+COPY tsconfig.json ./
+RUN yarn run test --coverage
 CMD [ "yarn", "run", "start" ]

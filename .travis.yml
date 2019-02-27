@@ -1,0 +1,13 @@
+sudo: required
+language: node_js
+node_js:
+  - "10"
+
+services:
+  - docker
+
+before_install:
+  - docker-compose build
+
+script:
+  - docker-compose run --rm web yarn run test --coverage
